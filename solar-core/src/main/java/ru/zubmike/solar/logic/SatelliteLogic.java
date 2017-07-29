@@ -39,11 +39,12 @@ public class SatelliteLogic {
 		planetDao.get(planetId).orElseThrow(NotFoundException::new);
 	}
 
-	public void updateSatellite(int id, SatelliteEntry entry) {
+	public SatelliteInfo updateSatellite(int id, SatelliteEntry entry) {
 		checkSatelliteData(entry.getPlanetId());
 		Satellite item = satelliteDao.get(id).orElseThrow(NotFoundException::new);
 		updateSatelliteData(item, entry);
 		satelliteDao.update(item);
+		return createSatelliteInfo(item);
 	}
 
 	private static void updateSatelliteData(Satellite item, SatelliteEntry entry) {

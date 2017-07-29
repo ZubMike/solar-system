@@ -23,9 +23,8 @@ public class SatelliteResource extends AbstractResource {
 
 	@PUT
 	@Path("/{id}")
-	public Response updateSatellite(@PathParam("id") int id, SatelliteEntry satelliteEntry) {
-		satelliteLogic.updateSatellite(id, satelliteEntry);
-		return Response.ok().build();
+	public SatelliteInfo updateSatellite(@PathParam("id") int id, SatelliteEntry satelliteEntry) {
+		return satelliteLogic.updateSatellite(id, satelliteEntry);
 	}
 
 	@GET
