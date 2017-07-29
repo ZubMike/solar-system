@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<configuration scan="true" scanPeriod="60 seconds">
+
+  <property name="loggingPattern" value="%-5level %d{yyyy-MM-dd HH:mm:ss,Europe/Moscow} %logger.%method\\(%file:%line\\): %message%n" />
+  <property name="requestPattern" value="%d{yyyy-MM-dd HH:mm:ss,Europe/Moscow}: %message%n" />
+  <property name="loggingHome" value="logs/" />
+  <property name="rollingPattern" value="%d{yyyy-MM-dd,Europe/Moscow}" />
+
+  <appender name="console" class="ch.qos.logback.core.ConsoleAppender">
+    <filter class="ch.qos.logback.classic.filter.ThresholdFilter">
+      <level>DEBUG</level>
+    </filter>
+    <encoder>
+      <pattern>${loggingPattern}</pattern>
+    </encoder>
+  </appender>
+  
+  <appender name="request-console" class="ch.qos.logback.core.ConsoleAppender">
+    <filter class="ch.qos.logback.classic.filter.ThresholdFilter">
+      <level>DEBUG</level>
+    </filter>
+    <encoder>
+      <pattern>${requestPattern}</pattern>
+    </encoder>
+  </appender>
+
+  <appender name="error-file" class="ch.qos.logback.core.rolling.RollingFileAppender">
+    <filter class="ch.qos.logback.classic.filter.ThresholdFilter">
+      <level>ERROR</level>
+    </filter>
+    <file>${loggingHome}/error.log</file>
+    <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
+      <fileNamePattern>${loggingHome}/error.${rollingPattern}.log</fileNamePattern>
+      <maxHistory>14</maxHistory>
+    </rollingPolicy>
+    <encoder>
+      <pattern>${loggingPattern}</pattern>
+    </encoder>
+  </appender>
+
+  <appender name="debug-file" class="ch.qos.logback.core.rolling.RollingFileAppender">
+    <filter class="ch.qos.logback.classic.filter.ThresholdFilter">
+      <level>DEBUG</level>
+    </filter>
+    <file>${loggingHome}/debug.log</file>
+    <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
+      <fileNamePattern>${loggingHome}/debug.${rollingPattern}.log</fileNamePattern>
+      <maxHistory>14</maxHistory>
+    </rollingPolicy>
+    <encoder>
+      <pattern>${loggingPattern}</pattern>
+    </encoder>
+  </appender>
+  
+  <appender name="info-file" class="ch.qos.logback.core.rolling.RollingFileAppender">
+    <filter class="ch.qos.logback.classic.filter.ThresholdFilter">
+      <level>INFO</level>
+    </filter>
+    <file>${loggingHome}/info.log</file>
+    <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
+      <fileNamePattern>${loggingHome}/info.${rollingPattern}.log</fileNamePattern>
+      <maxHistory>14</maxHistory>
+    </rollingPolicy>
+    <encoder>
+      <pattern>${loggingPattern}</pattern>
+    </encoder>
+  </appender>
+
+  <appender name="request-file" class="ch.qos.logback.core.rolling.RollingFileAppender">
+    <filter class="ch.qos.logback.classic.filter.ThresholdFilter">
+      <level>INFO</level>
+    </filter>
+    <file>${loggingHome}/request.log</file>
+    <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
+      <fileNamePattern>${loggingHome}/request.${rollingPattern}.log</fileNamePattern>
+      <maxHistory>14</maxHistory>
+    </rollingPolicy>
+    <encoder>
+      <pattern>${requestPattern}</pattern>
+    </encoder>
+  </appender>
+  
+  <logger level="ALL" name="ru.zubmike.solar" >
+    <appender-ref ref="console" />
+	<appender-ref ref="error-file" />
+    <appender-ref ref="debug-file" />
+	<appender-ref ref="info-file" />
+  </logger> 
+  
+  <logger level="INFO" name="ru.zubmike.solar.SolarSystemLoggingFilter" additivity="false">
+    <appender-ref ref="request-console" />
+	<appender-ref ref="request-file" />
+  </logger> 
+  
+  <root level="INFO">
+  </root>
+  
+</configuration>
