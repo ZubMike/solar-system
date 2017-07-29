@@ -15,6 +15,7 @@
         <guice.version>4.1.0</guice.version>
         <postgresql.version>9.3-1102-jdbc41</postgresql.version>
         <logback-classic.version>1.2.3</logback-classic.version>
+        <spring.version>4.3.10.RELEASE</spring.version>
     </properties>
 
     <dependencies>
@@ -41,6 +42,12 @@
             <groupId>ch.qos.logback</groupId>
             <artifactId>logback-classic</artifactId>
             <version>${logback-classic.version}</version>
+        </dependency>
+
+        <dependency>
+            <groupId>org.springframework</groupId>
+            <artifactId>spring-context</artifactId>
+            <version>${spring.version}</version>
         </dependency>
 
     </dependencies>

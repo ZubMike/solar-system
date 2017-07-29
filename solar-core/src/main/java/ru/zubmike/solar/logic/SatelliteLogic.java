@@ -1,6 +1,8 @@
 package ru.zubmike.solar.logic;
 
 import com.google.inject.Inject;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
 import ru.zubmike.core.types.DictItem;
 import ru.zubmike.core.utils.DictItemUtils;
 import ru.zubmike.solar.dao.PlanetDao;
@@ -15,12 +17,14 @@ import ru.zubmike.solar.utils.NotFoundException;
 import java.util.List;
 import java.util.stream.Collectors;
 
+@Component
 public class SatelliteLogic {
 	
 	private final SatelliteDao satelliteDao;
 	private final PlanetDao planetDao;
 	
 	@Inject
+	@Autowired
 	public SatelliteLogic(SatelliteDao satelliteDao, PlanetDao planetDao) {
 		this.satelliteDao = satelliteDao;
 		this.planetDao = planetDao;

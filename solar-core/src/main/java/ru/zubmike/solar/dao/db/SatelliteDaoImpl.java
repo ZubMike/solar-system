@@ -2,6 +2,8 @@ package ru.zubmike.solar.dao.db;
 
 import com.google.inject.Inject;
 import org.hibernate.SessionFactory;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
 import ru.zubmike.core.dao.db.BasicEntityItemDao;
 import ru.zubmike.solar.dao.SatelliteDao;
 import ru.zubmike.solar.types.Satellite;
@@ -12,9 +14,11 @@ import javax.persistence.criteria.CriteriaQuery;
 import javax.persistence.criteria.Root;
 import java.util.List;
 
+@Component
 public class SatelliteDaoImpl extends BasicEntityItemDao<Integer, Satellite> implements SatelliteDao {
 
 	@Inject
+	@Autowired
 	public SatelliteDaoImpl(SessionFactory sessionFactory) {
 		super(sessionFactory, Satellite.class);
 	}

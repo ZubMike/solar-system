@@ -1,6 +1,8 @@
 package ru.zubmike.solar.logic;
 
 import com.google.inject.Inject;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
 import ru.zubmike.core.types.BasicDictItem;
 import ru.zubmike.core.types.DictItem;
 import ru.zubmike.core.utils.DictItemUtils;
@@ -20,6 +22,7 @@ import java.util.List;
 import java.util.Optional;
 import java.util.stream.Collectors;
 
+@Component
 public class PlanetLogic {
 
 	private static final int MIN_RADIUS = 200;
@@ -31,6 +34,7 @@ public class PlanetLogic {
 	private final PlanetTypeModel planetTypeModel;
 	
 	@Inject
+	@Autowired
 	public PlanetLogic(PlanetDao planetDao, PlanetTypeModel planetTypeModel) {
 		this.planetDao = planetDao;
 		this.planetTypeModel = planetTypeModel;
