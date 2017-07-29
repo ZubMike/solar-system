@@ -21,9 +21,9 @@ public class SatelliteResource extends AbstractResource {
 		this.satelliteLogic = satelliteLogic;
 	}
 
-	@POST
-	@Path("/{satellite_id}")
-	public Response updateSatellite(@PathParam("satellite_id") int id, SatelliteEntry satelliteEntry) {
+	@PUT
+	@Path("/{id}")
+	public Response updateSatellite(@PathParam("id") int id, SatelliteEntry satelliteEntry) {
 		satelliteLogic.updateSatellite(id, satelliteEntry);
 		return Response.ok().build();
 	}
@@ -34,14 +34,14 @@ public class SatelliteResource extends AbstractResource {
 	}
 
 	@GET
-	@Path("/{satellite_id}")
-	public SatelliteInfo getSatellite(@PathParam("satellite_id") int id) {
+	@Path("/{id}")
+	public SatelliteInfo getSatellite(@PathParam("id") int id) {
 		return satelliteLogic.getSatellite(id);
 	}
 
 	@DELETE
-	@Path("/{satellite_id}")
-	public Response removeSatellite(@PathParam("satellite_id") int id) {
+	@Path("/{id}")
+	public Response removeSatellite(@PathParam("id") int id) {
 		satelliteLogic.removeSatellite(id);
 		return Response.ok().build();
 	}

@@ -21,7 +21,7 @@ public class DictionaryResource extends AbstractResource {
 	}
 
 	@GET
-	@Path("planet-types")
+	@Path("/planet-types")
 	public List<DictItem<Integer>> getPlanetTypes() {
 		return dictionaryLogic.getPlanetTypes();
 	}

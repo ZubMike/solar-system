@@ -33,8 +33,8 @@ public class PlanetResource extends AbstractResource {
 	}
 
 	@PUT
-	@Path("/{planet_id}")
-	public PlanetInfo updatePlanet(@PathParam("planet_id") int id, PlanetEntry planetEntry) {
+	@Path("/{id}")
+	public PlanetInfo updatePlanet(@PathParam("id") int id, PlanetEntry planetEntry) {
 		return planetLogic.updatePlanet(id, planetEntry);
 	}
 
@@ -44,34 +44,34 @@ public class PlanetResource extends AbstractResource {
 	}
 
 	@GET
-	@Path("/{planet_id}")
-	public PlanetInfo getPlanet(@PathParam("planet_id") int id) {
+	@Path("/{id}")
+	public PlanetInfo getPlanet(@PathParam("id") int id) {
 		return planetLogic.getPlanet(id);
 	}
 
 	@DELETE
-	@Path("/{planet_id}")
-	public Response removePlanet(@PathParam("planet_id") int id) {
+	@Path("/{id}")
+	public Response removePlanet(@PathParam("id") int id) {
 		planetLogic.removePlanet(id);
 		return Response.ok().build();
 	}
 
 	@POST
-	@Path("/{planet_id}/satellites")
-	public SatelliteInfo addSatellite(@PathParam("planet_id") int planetId,
+	@Path("/{id}/satellites")
+	public SatelliteInfo addSatellite(@PathParam("id") int planetId,
 	                                  SatelliteEntry satelliteEntry) {
 		return satelliteLogic.addSatellite(planetId, satelliteEntry);
 	}
 
 	@GET
-	@Path("/{planet_id}/satellites")
-	public List<DictItem<Integer>> getSatellite(@PathParam("planet_id") int planetId) {
+	@Path("/{id}/satellites")
+	public List<DictItem<Integer>> getSatellite(@PathParam("id") int planetId) {
 		return satelliteLogic.getSatellites(planetId);
 	}
 
 	@DELETE
-	@Path("/planets/{planet_id}/satellites")
-	public Response removeSatellites(@PathParam("planet_id") int planetId) {
+	@Path("/{id}/satellites")
+	public Response removeSatellites(@PathParam("id") int planetId) {
 		satelliteLogic.removeSatellites(planetId);
 		return Response.ok().build();
 	}

@@ -9,20 +9,20 @@
 
   <artifactId>solar-core</artifactId>
   <version>1.0.0</version>
-  
+
   <properties>
     <hibernate-core-db.version>1.0.0</hibernate-core-db.version>
     <guice.version>4.1.0</guice.version>
     <postgresql.version>9.3-1102-jdbc41</postgresql.version>
     <logback-classic.version>1.2.3</logback-classic.version>
   </properties>
-  
+
   <dependencies>
-  
+
     <dependency>
-	  <groupId>ru.zubmike</groupId>
-	  <artifactId>hibernate-core-db</artifactId>
-	  <version>${hibernate-core-db.version}</version>
+      <groupId>ru.zubmike</groupId>
+      <artifactId>hibernate-core-db</artifactId>
+      <version>${hibernate-core-db.version}</version>
     </dependency>
 
     <dependency>
@@ -44,5 +44,5 @@
     </dependency>
 
   </dependencies>
-  
+
 </project>
